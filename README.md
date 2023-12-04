@@ -11,4 +11,8 @@ Say something
 Some more words
 
 #### Examples
-Code + words
+Some more words
+
+```
+And some code
+```

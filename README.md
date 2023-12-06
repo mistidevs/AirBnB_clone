@@ -1,4 +1,4 @@
-# hbnb - The Better AirBnB
+# hbnb - The ALX AirBnB
 ![hbnb logo](hbnb.png)
 
 ## The Console

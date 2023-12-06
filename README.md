@@ -1,4 +1,6 @@
-# hbnb - The Better AirBnB
+# hbnb - The ALX AirBnB
+![hbnb logo](hbnb.png)
+
 ## The Console
 This is the creation of a CLI interface and Python model engines for file abstraction and use of classes to store the data and backend operations of the website.
 

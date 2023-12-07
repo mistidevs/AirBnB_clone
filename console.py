@@ -27,7 +27,6 @@ class HBNBCommand(cmd.Cmd):
         "Showing the instance of a class of an id"
         classes = ["BaseModel"]
         args = arg.split(" ")
-        flag = 0
         if len(arg) == 0:
             print("** class name missing **")
             return
@@ -44,6 +43,43 @@ class HBNBCommand(cmd.Cmd):
         else:
             print("** class doesn't exist **")
 
+    def do_destroy(self, arg):
+        "Showing the instance of a class of an id"
+        classes = ["BaseModel"]
+        args = arg.split(" ")
+        if len(arg) == 0:
+            print("** class name missing **")
+            return
+        if args[0] in classes:
+            if len(args) == 2:
+                key = args[0] + "." + args[1]
+                if key not in storage.objects:
+                    print("** no instance found **")
+                    return
+                del storage.objects[key]
+                storage.save()
+            else:
+                print("** instance id missing **")
+        else:
+            print("** class doesn't exist **")
+
+    def do_all(self, arg):
+        classes = ["BaseModel"]
+        args = arg.split(" ")
+        if len(arg) == 0:
+            for key, value in storage.objects.items():
+                print(value)
+        elif len(args) == 1:
+            if args[0] in classes:
+                for key, value in storage.objects.items():
+                    parts = key.split(".")
+                    if parts[0] == args[0]:
+                        print(value)
+                        print(key)
+            else:
+                print("** class doesn't exist **")
+                        
+            
     def do_EOF(self, line):
         "Exit when EOF command is given with ^D"
         print("")

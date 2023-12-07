@@ -24,7 +24,7 @@ class BaseModel:
 
     def __str__(self):
         """Returning string representation of the class"""
-        return f"{type(self).__name__} ({self.id}) {self.__dict__}"
+        return f"[{type(self).__name__}] ({self.id}) {self.__dict__}"
 
     def save(self):
         from models import storage

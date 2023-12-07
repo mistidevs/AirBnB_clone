@@ -30,4 +30,11 @@ class FileStorage:
         with open(self.__file_path, "w") as f:
             json.dump(seri_dict, f)
 
+    def reload(self):
+        """deserializes the JSON file to __objects"""
+        try:
+            with open(self.__file_path, 'r') as f:
+               di = json.load(f)
+        except:
+            pass
 

@@ -4,6 +4,7 @@ import copy
 import json
 import datetime
 from models.base_model import BaseModel
+from models.user import User
 
 
 def str_to_datetime(s):

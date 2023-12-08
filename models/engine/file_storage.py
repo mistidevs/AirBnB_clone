@@ -5,6 +5,11 @@ import json
 import datetime
 from models.base_model import BaseModel
 from models.user import User
+from models.state import State
+from models.city import City
+from models.amenity.py import Amenity
+from models.place import Place
+from models.review import Review
 
 
 def str_to_datetime(s):
@@ -20,6 +25,7 @@ class FileStorage:
     def objects(self):
         """Return the __objects dictionary"""
         return self.__objects
+
 
      def all(self):
         """Return all the objects made"""

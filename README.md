@@ -86,7 +86,7 @@ destroy deletes an instance of a class
 ** no instance found **
 ```
 
-###### create
+##### create
 create makes an instance of a class
 
 ```bash

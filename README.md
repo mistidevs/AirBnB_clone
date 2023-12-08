@@ -7,7 +7,12 @@ This is the creation of a CLI interface and Python model engines for file abstra
 
 ### Command Line Interpreter
 #### Starting It
-Say something
+To start it call run the console.py file using `./console.py`.
+Once it starts a prompt like this will appear:
+
+```bash
+(hbnb)
+```
 
 #### Using It
 Some more words
@@ -15,6 +20,6 @@ Some more words
 #### Examples
 Some more words
 
-```
-And some code
+```bash
+
 ```

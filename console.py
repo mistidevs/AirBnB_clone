@@ -111,11 +111,11 @@ class HBNBCommand(cmd.Cmd):
             print("** instance id missing **")
             return
         key = args[0] + "." + args[1]
-        if len(args) == 2:
+        if len(args) >= 2:
             if key not in storage.objects:
                 print("** no instance found **")
                 return
-            else:
+            elif len(args) == 2:
                 print("** attribute name missing **")
                 return
         if len(args) == 3:
@@ -138,6 +138,27 @@ class HBNBCommand(cmd.Cmd):
                 if args[0] == "User":
                     counter += 1
             print(counter)
+        else:
+            parts = arg.split("(")
+            cmd = parts[0]
+            if cmd == ".show":
+                args = parts[1].split("\"")
+                argi = args[1]
+                command = "User " + argi
+                self.do_show(command)
+            elif cmd == ".destroy":
+                args = parts[1].split("\"")
+                argi = args[1]
+                command = "User " + argi
+                self.do_destroy(command)
+            elif cmd == ".update":
+                args = parts[1].split(", ")
+                arg_1 = args[0].split("\"")[1]
+                arg_2 = args[1].split("\"")[1]
+                arg_3 = args[2].split("\"")[1]
+                command = "User " + arg_1 + " " + arg_2 + " " + arg_3
+                self.do_update(command)
+                
         
     def do_EOF(self, line):
         "Exit when EOF command is given with ^D"

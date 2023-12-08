@@ -160,35 +160,35 @@ class HBNBCommand(cmd.Cmd):
                 self.do_update(command)
 
         def do_BaseModel(self, arg):
-        if arg == ".all()":
-            self.do_all("BaseModel")
-        elif arg == ".count()":
-            counter = 0
-            for key in storage.objects:
-                args = key.split(".")
-                if args[0] == "BaseModel":
-                    counter += 1
-            print(counter)
-        else:
-            parts = arg.split("(")
-            cmd = parts[0]
-            if cmd == ".show":
-                args = parts[1].split("\"")
-                argi = args[1]
-                command = "BaseModel " + argi
-                self.do_show(command)
-            elif cmd == ".destroy":
-                args = parts[1].split("\"")
-                argi = args[1]
-                command = "BaseModel " + argi
-                self.do_destroy(command)
-            elif cmd == ".update":
-                args = parts[1].split(", ")
-                arg_1 = args[0].split("\"")[1]
-                arg_2 = args[1].split("\"")[1]
-                arg_3 = args[2].split("\"")[1]
-                command = "BaseModel " + arg_1 + " " + arg_2 + " " + arg_3
-                self.do_update(command)
+            if arg == ".all()":
+                self.do_all("BaseModel")
+            elif arg == ".count()":
+                counter = 0
+                for key in storage.objects:
+                    args = key.split(".")
+                    if args[0] == "BaseModel":
+                        counter += 1
+                print(counter)
+            else:
+                parts = arg.split("(")
+                cmd = parts[0]
+                if cmd == ".show":
+                    args = parts[1].split("\"")
+                    argi = args[1]
+                    command = "BaseModel " + argi
+                    self.do_show(command)
+                elif cmd == ".destroy":
+                    args = parts[1].split("\"")
+                    argi = args[1]
+                    command = "BaseModel " + argi
+                    self.do_destroy(command)
+                elif cmd == ".update":
+                    args = parts[1].split(", ")
+                    arg_1 = args[0].split("\"")[1]
+                    arg_2 = args[1].split("\"")[1]
+                    arg_3 = args[2].split("\"")[1]
+                    command = "BaseModel " + arg_1 + " " + arg_2 + " " + arg_3
+                    self.do_update(command)
 
         def do_State(self, arg):
         if arg == ".all()":

@@ -17,15 +17,17 @@ class HBNBCommand(cmd.Cmd):
             return
         if args[0] == "BaseModel":
             instance = models.base_model.BaseModel()
-            instance.save()
-            print(instance.id)
-            storage.new(instance)
+        elif args[0] == "User":
+            instance = models.user.User()
         else:
             print("** class doesn't exist **")
+        instance.save()
+        print(instance.id)
+        storage.new(instance)
 
     def do_show(self, arg):
         """Showing the instance of a class of an id"""
-        classes = ["BaseModel"]
+        classes = ["BaseModel", "User"]
         args = arg.split(" ")
         if len(arg) == 0:
             print("** class name missing **")
@@ -45,7 +47,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_destroy(self, arg):
         """Showing the instance of a class of an id"""
-        classes = ["BaseModel"]
+        classes = ["BaseModel", "User"]
         args = arg.split(" ")
         if len(arg) == 0:
             print("** class name missing **")
@@ -65,7 +67,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_all(self, arg):
         """Printing either all class instances or all instances of a class"""
-        classes = ["BaseModel"]
+        classes = ["BaseModel", "User"]
         args = arg.split(" ")
         if len(arg) == 0:
             for key, value in storage.objects.items():
@@ -76,14 +78,13 @@ class HBNBCommand(cmd.Cmd):
                     parts = key.split(".")
                     if parts[0] == args[0]:
                         print(value)
-                        print(key)
             else:
                 print("** class doesn't exist **")
 
     def do_update(self, arg):
         """ Updating class attributes """
         args = arg.split(" ")
-        classes = ["BaseModel"]
+        classes = ["BaseModel", "User"]
         if len(args) == 0:
             print("** class name missing **")
             return

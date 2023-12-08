@@ -129,6 +129,7 @@ class HBNBCommand(cmd.Cmd):
         instance.save()
 
     def do_User(self, arg):
+        """Call functions all, show, update, destroy and count on User"""
         if arg == ".all()":
             self.do_all("User")
         elif arg == ".count()":
@@ -160,6 +161,7 @@ class HBNBCommand(cmd.Cmd):
                 self.do_update(command)
 
     def do_BaseModel(self, arg):
+        """Call functions all, show, update, destroy and count on BaseModel"""
         if arg == ".all()":
             self.do_all("BaseModel")
         elif arg == ".count()":
@@ -191,6 +193,7 @@ class HBNBCommand(cmd.Cmd):
                 self.do_update(command)
 
     def do_State(self, arg):
+        """Call functions all, show, update, destroy and count on State"""
         if arg == ".all()":
             self.do_all("State")
         elif arg == ".count()":
@@ -222,6 +225,7 @@ class HBNBCommand(cmd.Cmd):
                 self.do_update(command)
 
     def do_City(self, arg):
+        """Call functions all, show, update, destroy and count on City"""
         if arg == ".all()":
             self.do_all("City")
         elif arg == ".count()":
@@ -253,6 +257,7 @@ class HBNBCommand(cmd.Cmd):
                 self.do_update(command)
 
     def do_Amenity(self, arg):
+        """Call functions all, show, update, destroy and count on Amenity"""
         if arg == ".all()":
             self.do_all("Amenity")
         elif arg == ".count()":
@@ -284,6 +289,7 @@ class HBNBCommand(cmd.Cmd):
                 self.do_update(command)
 
     def do_Place(self, arg):
+        """Call functions all, show, update, destroy and count on Place"""
         if arg == ".all()":
             self.do_all("Place")
         elif arg == ".count()":
@@ -315,6 +321,7 @@ class HBNBCommand(cmd.Cmd):
                 self.do_update(command)
 
     def do_Review(self, arg):
+        """Call functions all, show, update, destroy and count on Review"""
         if arg == ".all()":
             self.do_all("Review")
         elif arg == ".count()":

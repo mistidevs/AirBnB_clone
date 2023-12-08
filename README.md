@@ -41,6 +41,7 @@ List available commands with "help" or detailed help with "help cmd".
 Moving on to User:
 
 ```bash
+(hbnb) help User
 Call functions all, show, update, destroy and count on User
 ```
 

@@ -9,7 +9,7 @@ from models.user import User
 
 def str_to_datetime(s):
     """Convert a string in ISO format to a datetime object"""
-    return datetime.datetime.fromisoformat(s)i
+    return datetime.datetime.fromisoformat(s)
 
 class FileStorage:
     """The nitty gritties of how it does this"""

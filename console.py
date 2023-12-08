@@ -19,6 +19,16 @@ class HBNBCommand(cmd.Cmd):
             instance = models.base_model.BaseModel()
         elif args[0] == "User":
             instance = models.user.User()
+        elif args[0] == "State":
+            instance = models.state.State()
+        elif args[0] == "City":
+            instance = models.city.City()
+        elif args[0] == "Amenity":
+            instance = models.amenity.Amenity()
+        elif args[0] == "Place":
+            instance = models.place.Place()
+        elif args[0] == "Review":
+            instance = models.review.Review()
         else:
             print("** class doesn't exist **")
         instance.save()
@@ -27,7 +37,8 @@ class HBNBCommand(cmd.Cmd):
 
     def do_show(self, arg):
         """Showing the instance of a class of an id"""
-        classes = ["BaseModel", "User"]
+        classes = ["BaseModel", "User", "State", "City",
+                   "Amenity", "Place", "Review"]
         args = arg.split(" ")
         if len(arg) == 0:
             print("** class name missing **")
@@ -47,7 +58,8 @@ class HBNBCommand(cmd.Cmd):
 
     def do_destroy(self, arg):
         """Showing the instance of a class of an id"""
-        classes = ["BaseModel", "User"]
+        classes = ["BaseModel", "User", "State", "City",
+                   "Amenity", "Place", "Review"]
         args = arg.split(" ")
         if len(arg) == 0:
             print("** class name missing **")
@@ -67,7 +79,8 @@ class HBNBCommand(cmd.Cmd):
 
     def do_all(self, arg):
         """Printing either all class instances or all instances of a class"""
-        classes = ["BaseModel", "User"]
+        classes = ["BaseModel", "User", "State", "City",
+                   "Amenity", "Place", "Review"]
         args = arg.split(" ")
         if len(arg) == 0:
             for key, value in storage.objects.items():
@@ -84,7 +97,8 @@ class HBNBCommand(cmd.Cmd):
     def do_update(self, arg):
         """ Updating class attributes """
         args = arg.split(" ")
-        classes = ["BaseModel", "User"]
+        classes = ["BaseModel", "User", "State", "City",
+                   "Amenity", "Place", "Review"]
         if len(args) == 0:
             print("** class name missing **")
             return

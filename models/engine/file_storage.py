@@ -21,12 +21,13 @@ class FileStorage:
     __objects = {}
     __file_path = "file.json"
 
-    @property
+     @property
     def objects(self):
         """Return the __objects dictionary"""
         return self.__objects
 
-    def all(self):
+
+     def all(self):
         """Return all the objects made"""
         return self.__objects
 
@@ -34,8 +35,8 @@ class FileStorage:
         """Adding a new instance"""
         key = type(obj).__name__ + "." + obj.id
         self.__objects[key] = obj
-    
-    def save(self):
+
+     def save(self):
         """Saving all the objects to a JSON file"""
         json_opt = {}
         for key, value in self.__objects.items():

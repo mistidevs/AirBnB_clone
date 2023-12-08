@@ -3,6 +3,8 @@
 import cmd
 import models
 from models import storage
+import copy
+
 
 class HBNBCommand(cmd.Cmd):
     """HBNB debugging and optimisation console"""
@@ -125,6 +127,17 @@ class HBNBCommand(cmd.Cmd):
         attr_value = args[3]
         setattr(instance, attr_name, attr_value)
         instance.save()
+
+    def do_User(self, arg):
+        if arg == ".all()":
+            self.do_all("User")
+        elif arg == ".count()":
+            counter = 0
+            for key in storage.objects:
+                args = key.split(".")
+                if args[0] == "User":
+                    counter += 1
+            print(counter)
         
     def do_EOF(self, line):
         "Exit when EOF command is given with ^D"

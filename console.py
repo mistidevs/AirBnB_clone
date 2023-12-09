@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 """The console program"""
+import json
+import re
 import cmd
 import models
 from models import storage
@@ -123,22 +125,11 @@ class HBNBCommand(cmd.Cmd):
             return
  
         instance_dic = storage.all()
-        attr_name = args[2]
-        attr_value = args[3]
-        list1 = ["id", "created_at", "updated_at"]
-        if key in instance_dic:
-            if attr_name not in list1:
-                if hasattr(instance_dic[key], attr_name):
-                    attr_type = type(getattr(instance_dic[key], attr_name))
-                    setattr(instance_dic[key], attr_name, attr_type(attr_value))
-                else:
-                    setattr(instance_dic[key], attr_name, attr_value)
-
-                instance_dic[key].save()
-            else:
-                print(f"{attr_name} can't be apdated")
-        else:
-            print("No instance found")
+        attr_js = re.findall(r"{.*}", arg)
+        if attr_js:
+            dict1: dict = json.loads(attr_js[0])
+            for k, v in dict1.items():
+                setattr()
 
     def do_User(self, arg):
         """Call functions all, show, update, destroy and count on User"""

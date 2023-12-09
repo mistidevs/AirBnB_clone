@@ -125,11 +125,17 @@ class HBNBCommand(cmd.Cmd):
             return
  
         instance_dic = storage.all()
+        req_dic = instance_dic.get(key, None)
+        if req_dic is None:
+            print("invalid syntax")
+            return
         attr_js = re.findall(r"{.*}", arg)
         if attr_js:
             dict1: dict = json.loads(attr_js[0])
             for k, v in dict1.items():
-                setattr()
+                setattr(req_dic, k, v)
+            req_dic.save()
+            return
 
     def do_User(self, arg):
         """Call functions all, show, update, destroy and count on User"""

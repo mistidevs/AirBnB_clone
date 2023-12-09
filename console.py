@@ -110,6 +110,7 @@ class HBNBCommand(cmd.Cmd):
         if len(args) == 1:
             print("** instance id missing **")
             return
+        key = args[0] + "." + args[1]
         if len(args) >= 2:
             if key not in storage.objects:
                 print("** no instance found **")
@@ -120,8 +121,7 @@ class HBNBCommand(cmd.Cmd):
         if len(args) == 3:
             print("** value missing **")
             return
-
-        key = args[0] + "." + args[1]
+ 
         instance_dic = storage.all()
         attr_name = args[2]
         attr_value = args[3]

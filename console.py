@@ -110,7 +110,6 @@ class HBNBCommand(cmd.Cmd):
         if len(args) == 1:
             print("** instance id missing **")
             return
-        key = args[0] + "." + args[1]
         if len(args) >= 2:
             if key not in storage.objects:
                 print("** no instance found **")
@@ -122,11 +121,24 @@ class HBNBCommand(cmd.Cmd):
             print("** value missing **")
             return
 
-        instance = storage.objects[key]
+        key = args[0] + "." + args[1]
+        instance_dic = storage.all()
         attr_name = args[2]
         attr_value = args[3]
-        setattr(instance, attr_name, attr_value)
-        instance.save()
+        list1 = ["id", "created_at", "updated_at"]
+        if key i in instance_dic:
+            if attr_name not in list1:
+                if hasattr(instance_dic[key], attr_name):
+                    attr_type = type(getattr(instance_dic[key], attr_name))
+                    setattr(instance_dic[key], attr_name, attr_type(attr_value))
+                else:
+                    setattr(instance_dic[key], attr_name, attr_value)
+
+                instance_dic[key].save()
+            else:
+                print(f"{attr_name} can't be apdated")
+        else:
+            print("No instance found")
 
     def do_User(self, arg):
         """Call functions all, show, update, destroy and count on User"""

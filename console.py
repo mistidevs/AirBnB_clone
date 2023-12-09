@@ -126,7 +126,7 @@ class HBNBCommand(cmd.Cmd):
         attr_name = args[2]
         attr_value = args[3]
         list1 = ["id", "created_at", "updated_at"]
-        if key i in instance_dic:
+        if key in instance_dic:
             if attr_name not in list1:
                 if hasattr(instance_dic[key], attr_name):
                     attr_type = type(getattr(instance_dic[key], attr_name))

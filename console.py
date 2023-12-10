@@ -4,6 +4,8 @@ import cmd
 import models
 from models import storage
 import copy
+import re
+import ast
 
 
 class HBNBCommand(cmd.Cmd):
@@ -153,12 +155,19 @@ class HBNBCommand(cmd.Cmd):
                 command = "User " + argi
                 self.do_destroy(command)
             elif cmd == ".update":
-                args = parts[1].split(", ")
+                args = parts[1].split(" ")
                 arg_1 = args[0].split("\"")[1]
-                arg_2 = args[1].split("\"")[1]
-                arg_3 = args[2].split("\"")[1]
-                command = "User " + arg_1 + " " + arg_2 + " " + arg_3
-                self.do_update(command)
+                if len(args) == 3:
+                    arg_2 = args[1].split("\"")[1]
+                    arg_3 = args[2].split(")")[0]
+                    command = "User " + arg_1 + " " + arg_2 + " " + str(arg_3)
+                    self.do_update(command)
+                else:
+                    match = re.search(r'({.+?})', arg)
+                    the_dict = ast.literal_eval(match.group(1))
+                    for key, value in the_dict.items():
+                        command = "User " + arg_1 + " " + key + " " + str(value)
+                        self.do_update(command)
 
     def do_BaseModel(self, arg):
         """Call functions all, show, update, destroy and count on BaseModel"""

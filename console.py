@@ -123,19 +123,23 @@ class HBNBCommand(cmd.Cmd):
         if len(args) == 3:
             print("** value missing **")
             return
- 
-        instance_dic = storage.all()
-        req_dic = instance_dic.get(key, None)
-        if req_dic is None:
-            print("invalid syntax")
-            return
-        attr_js = re.findall(r"{.*}", arg)
-        if attr_js:
-            dict1: dict = json.loads(attr_js[0])
-            for k, v in dict1.items():
-                setattr(req_dic, k, v)
-            req_dic.save()
-            return
+        dic_js = storage.all()
+        if len(args) > 3:
+            dic = dic_js[key]
+            if args[2] in dic.__class__.__dict__.keys():
+                attr_val = type(dic.__class__.__dict__[args[2]])
+                dic.__dict__[args[2]] = attr_val(args[3])
+            else:dic.__dict__[args[2]] = args[3]
+        elif type(eval(args[2])) == dict:
+            dic = dic_js[key]
+            for k, v in eval(args[2]).items():
+                if (k in dic.__class__.__dict__.keys() and type(dic.__class__.__dict__[k]) in[str, int, float]):
+                        attr_type = type(dic.__class__.__dict__[k])
+                        dic.__dict__[k] = attr_type(v)
+                else:
+                    dic.__dict__[k] = v
+        storage.save()
+
 
     def do_User(self, arg):
         """Call functions all, show, update, destroy and count on User"""

@@ -102,5 +102,5 @@ class PlaceTest_value(unittest.TestCase):
         sleep(1)
         p2 = Place()
         self.assertLess(p1.updated_at, p2.updated_at)
-if __anme__ == "__main__":
+if __name__ == "__main__":
     unittest.main()

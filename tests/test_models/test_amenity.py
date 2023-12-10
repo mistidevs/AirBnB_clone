@@ -1,15 +1,15 @@
 #!/usr/bin/python3
 """Def the unittest for the Amenity class"""
-import models
+from models.base_model import BaseModel
 import unittest
 from datetime import datetime
 from time import sleep
 import os
-from models.place import Amenity
+from models.amenity import Amenity
 
 
 class Testamenity_values(unittest.TestCase):
-    """Test the aminity class values"""
+    """Test the amenity class values"""
 
     def test_no_args(self):
         self.assertEqual(Amenity(), type(Amenity()))

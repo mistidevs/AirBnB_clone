@@ -5,7 +5,7 @@ import unittest
 from datetime import datetime
 from time import sleep
 import os
-from models.place import Review
+from models.review import Review
 
 
 class TestReview_values(unittest.TestCase):

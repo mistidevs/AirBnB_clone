@@ -5,7 +5,7 @@ import unittest
 from datetime import datetime
 from time import sleep
 import os
-from models.place import City
+from models.city import City
 
 
 class TestCity_value(unittest.TestCase):

@@ -126,8 +126,12 @@ class HBNBCommand(cmd.Cmd):
 
         instance = storage.objects[key]
         attr_name = args[2]
-        attr_value = args[3]
-        setattr(instance, attr_name, attr_value)
+        attr_value = ""
+        for i in range(3, len(args)):
+            attr_value += args[i]
+            if i != len(args) - 1:
+                attr_value += " "
+        setattr(instance, attr_name, attr_value.split("\"")[1])
         instance.save()
 
     def do_User(self, arg):
@@ -166,6 +170,8 @@ class HBNBCommand(cmd.Cmd):
                     match = re.search(r'({.+?})', arg)
                     the_dict = ast.literal_eval(match.group(1))
                     for key, value in the_dict.items():
+                        if type(value) is int:
+                            value = str(value)
                         command = "User " + arg_1 + " " + key + " " + str(value)
                         self.do_update(command)
 
@@ -284,7 +290,7 @@ class HBNBCommand(cmd.Cmd):
                     the_dict = ast.literal_eval(match.group(1))
                     for key, value in the_dict.items():
                         command = "City " + arg_1 + " " + key + " " + str(value)
-                        self.do_update(command))
+                        self.do_update(command)
 
     def do_Amenity(self, arg):
         """Call functions all, show, update, destroy and count on Amenity"""
@@ -355,13 +361,19 @@ class HBNBCommand(cmd.Cmd):
                 if len(args) == 3:
                     arg_2 = args[1].split("\"")[1]
                     arg_3 = args[2].split(")")[0]
-                    command = "Place " + arg_1 + " " + arg_2 + " " + str(arg_3)
+                    if type(arg_3) is int:
+                        arg_3 = str(arg_3)
+                    command = "Place " + arg_1 + " " + arg_2 + " " + arg_3
                     self.do_update(command)
                 else:
                     match = re.search(r'({.+?})', arg)
+                    print(match)
                     the_dict = ast.literal_eval(match.group(1))
+                    print(the_dict)
                     for key, value in the_dict.items():
-                        command = "Place " + arg_1 + " " + key + " " + str(value)
+                        if type(value) is int:
+                            value = str(value)
+                        command = "Place " + arg_1 + " " + key + " " + value
                         self.do_update(command)
 
     def do_Review(self, arg):
@@ -389,7 +401,7 @@ class HBNBCommand(cmd.Cmd):
                 command = "Review " + argi
                 self.do_destroy(command)
             elif cmd == ".update":
-                args = parts[1].split(" ")
+                args = parts[1].split(", ")
                 arg_1 = args[0].split("\"")[1]
                 if len(args) == 3:
                     arg_2 = args[1].split("\"")[1]

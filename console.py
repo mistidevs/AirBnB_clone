@@ -4,6 +4,8 @@ import cmd
 import models
 from models import storage
 import copy
+import re
+import ast
 
 
 class HBNBCommand(cmd.Cmd):
@@ -153,12 +155,19 @@ class HBNBCommand(cmd.Cmd):
                 command = "User " + argi
                 self.do_destroy(command)
             elif cmd == ".update":
-                args = parts[1].split(", ")
+                args = parts[1].split(" ")
                 arg_1 = args[0].split("\"")[1]
-                arg_2 = args[1].split("\"")[1]
-                arg_3 = args[2].split("\"")[1]
-                command = "User " + arg_1 + " " + arg_2 + " " + arg_3
-                self.do_update(command)
+                if len(args) == 3:
+                    arg_2 = args[1].split("\"")[1]
+                    arg_3 = args[2].split(")")[0]
+                    command = "User " + arg_1 + " " + arg_2 + " " + str(arg_3)
+                    self.do_update(command)
+                else:
+                    match = re.search(r'({.+?})', arg)
+                    the_dict = ast.literal_eval(match.group(1))
+                    for key, value in the_dict.items():
+                        command = "User " + arg_1 + " " + key + " " + str(value)
+                        self.do_update(command)
 
     def do_BaseModel(self, arg):
         """Call functions all, show, update, destroy and count on BaseModel"""
@@ -185,12 +194,19 @@ class HBNBCommand(cmd.Cmd):
                 command = "BaseModel " + argi
                 self.do_destroy(command)
             elif cmd == ".update":
-                args = parts[1].split(", ")
+                args = parts[1].split(" ")
                 arg_1 = args[0].split("\"")[1]
-                arg_2 = args[1].split("\"")[1]
-                arg_3 = args[2].split("\"")[1]
-                command = "BaseModel " + arg_1 + " " + arg_2 + " " + arg_3
-                self.do_update(command)
+                if len(args) == 3:
+                    arg_2 = args[1].split("\"")[1]
+                    arg_3 = args[2].split(")")[0]
+                    command = "BaseModel " + arg_1 + " " + arg_2 + " " + str(arg_3)
+                    self.do_update(command)
+                else:
+                    match = re.search(r'({.+?})', arg)
+                    the_dict = ast.literal_eval(match.group(1))
+                    for key, value in the_dict.items():
+                        command = "BaseModel " + arg_1 + " " + key + " " + str(value)
+                        self.do_update(command)
 
     def do_State(self, arg):
         """Call functions all, show, update, destroy and count on State"""
@@ -217,12 +233,19 @@ class HBNBCommand(cmd.Cmd):
                 command = "State " + argi
                 self.do_destroy(command)
             elif cmd == ".update":
-                args = parts[1].split(", ")
+                args = parts[1].split(" ")
                 arg_1 = args[0].split("\"")[1]
-                arg_2 = args[1].split("\"")[1]
-                arg_3 = args[2].split("\"")[1]
-                command = "State " + arg_1 + " " + arg_2 + " " + arg_3
-                self.do_update(command)
+                if len(args) == 3:
+                    arg_2 = args[1].split("\"")[1]
+                    arg_3 = args[2].split(")")[0]
+                    command = "State " + arg_1 + " " + arg_2 + " " + str(arg_3)
+                    self.do_update(command)
+                else:
+                    match = re.search(r'({.+?})', arg)
+                    the_dict = ast.literal_eval(match.group(1))
+                    for key, value in the_dict.items():
+                        command = "State " + arg_1 + " " + key + " " + str(value)
+                        self.do_update(command)
 
     def do_City(self, arg):
         """Call functions all, show, update, destroy and count on City"""
@@ -249,12 +272,19 @@ class HBNBCommand(cmd.Cmd):
                 command = "City " + argi
                 self.do_destroy(command)
             elif cmd == ".update":
-                args = parts[1].split(", ")
+                args = parts[1].split(" ")
                 arg_1 = args[0].split("\"")[1]
-                arg_2 = args[1].split("\"")[1]
-                arg_3 = args[2].split("\"")[1]
-                command = "City " + arg_1 + " " + arg_2 + " " + arg_3
-                self.do_update(command)
+                if len(args) == 3:
+                    arg_2 = args[1].split("\"")[1]
+                    arg_3 = args[2].split(")")[0]
+                    command = "City " + arg_1 + " " + arg_2 + " " + str(arg_3)
+                    self.do_update(command)
+                else:
+                    match = re.search(r'({.+?})', arg)
+                    the_dict = ast.literal_eval(match.group(1))
+                    for key, value in the_dict.items():
+                        command = "City " + arg_1 + " " + key + " " + str(value)
+                        self.do_update(command))
 
     def do_Amenity(self, arg):
         """Call functions all, show, update, destroy and count on Amenity"""
@@ -281,12 +311,19 @@ class HBNBCommand(cmd.Cmd):
                 command = "Amenity " + argi
                 self.do_destroy(command)
             elif cmd == ".update":
-                args = parts[1].split(", ")
+                args = parts[1].split(" ")
                 arg_1 = args[0].split("\"")[1]
-                arg_2 = args[1].split("\"")[1]
-                arg_3 = args[2].split("\"")[1]
-                command = "Amenity " + arg_1 + " " + arg_2 + " " + arg_3
-                self.do_update(command)
+                if len(args) == 3:
+                    arg_2 = args[1].split("\"")[1]
+                    arg_3 = args[2].split(")")[0]
+                    command = "Amenity " + arg_1 + " " + arg_2 + " " + str(arg_3)
+                    self.do_update(command)
+                else:
+                    match = re.search(r'({.+?})', arg)
+                    the_dict = ast.literal_eval(match.group(1))
+                    for key, value in the_dict.items():
+                        command = "Amenity " + arg_1 + " " + key + " " + str(value)
+                        self.do_update(command)
 
     def do_Place(self, arg):
         """Call functions all, show, update, destroy and count on Place"""
@@ -313,12 +350,19 @@ class HBNBCommand(cmd.Cmd):
                 command = "Place " + argi
                 self.do_destroy(command)
             elif cmd == ".update":
-                args = parts[1].split(", ")
+                args = parts[1].split(" ")
                 arg_1 = args[0].split("\"")[1]
-                arg_2 = args[1].split("\"")[1]
-                arg_3 = args[2].split("\"")[1]
-                command = "Place " + arg_1 + " " + arg_2 + " " + arg_3
-                self.do_update(command)
+                if len(args) == 3:
+                    arg_2 = args[1].split("\"")[1]
+                    arg_3 = args[2].split(")")[0]
+                    command = "Place " + arg_1 + " " + arg_2 + " " + str(arg_3)
+                    self.do_update(command)
+                else:
+                    match = re.search(r'({.+?})', arg)
+                    the_dict = ast.literal_eval(match.group(1))
+                    for key, value in the_dict.items():
+                        command = "Place " + arg_1 + " " + key + " " + str(value)
+                        self.do_update(command)
 
     def do_Review(self, arg):
         """Call functions all, show, update, destroy and count on Review"""
@@ -345,12 +389,19 @@ class HBNBCommand(cmd.Cmd):
                 command = "Review " + argi
                 self.do_destroy(command)
             elif cmd == ".update":
-                args = parts[1].split(", ")
+                args = parts[1].split(" ")
                 arg_1 = args[0].split("\"")[1]
-                arg_2 = args[1].split("\"")[1]
-                arg_3 = args[2].split("\"")[1]
-                command = "Review " + arg_1 + " " + arg_2 + " " + arg_3
-                self.do_update(command)
+                if len(args) == 3:
+                    arg_2 = args[1].split("\"")[1]
+                    arg_3 = args[2].split(")")[0]
+                    command = "Review " + arg_1 + " " + arg_2 + " " + str(arg_3)
+                    self.do_update(command)
+                else:
+                    match = re.search(r'({.+?})', arg)
+                    the_dict = ast.literal_eval(match.group(1))
+                    for key, value in the_dict.items():
+                        command = "Review " + arg_1 + " " + key + " " + str(value)
+                        self.do_update(command)
                 
         
     def do_EOF(self, line):

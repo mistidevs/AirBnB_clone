@@ -131,7 +131,7 @@ class HBNBCommand(cmd.Cmd):
             attr_value += args[i]
             if i != len(args) - 1:
                 attr_value += " "
-        setattr(instance, attr_name, attr_value)
+        setattr(instance, attr_name, attr_value.split("\"")[1])
         instance.save()
 
     def do_User(self, arg):
@@ -401,7 +401,7 @@ class HBNBCommand(cmd.Cmd):
                 command = "Review " + argi
                 self.do_destroy(command)
             elif cmd == ".update":
-                args = parts[1].split(" ")
+                args = parts[1].split(", ")
                 arg_1 = args[0].split("\"")[1]
                 if len(args) == 3:
                     arg_2 = args[1].split("\"")[1]

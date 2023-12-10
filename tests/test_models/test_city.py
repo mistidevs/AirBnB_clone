@@ -46,3 +46,6 @@ class TestCity_value(unittest.TestCase):
         sleep(1)
         city2 = City()
         self.assertNotEqual(city1.updated_at, city2.updated_at)
+
+if __name__ == "__main__":
+    unittest.main()

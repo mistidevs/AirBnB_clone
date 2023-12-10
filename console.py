@@ -414,8 +414,7 @@ class HBNBCommand(cmd.Cmd):
                     for key, value in the_dict.items():
                         command = "Review " + arg_1 + " " + key + " " + str(value)
                         self.do_update(command)
-                
-        
+
     def do_EOF(self, line):
         "Exit when EOF command is given with ^D"
         print("")

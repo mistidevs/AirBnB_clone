@@ -128,9 +128,15 @@ class HBNBCommand(cmd.Cmd):
         attr_name = args[2]
         attr_value = ""
         for i in range(3, len(args)):
-            attr_value += args[i]
+            if i == 3 and args[i][0] != "\"":
+                attr_value += "\"" + args[i]
+            else:
+                attr_value += args[i]
+
             if i != len(args) - 1:
                 attr_value += " "
+            elif i == len(args) - 1 and args[i][-1] != "\"":
+                attr_value += "\""
         print(attr_value)
         setattr(instance, attr_name, attr_value.split("\"")[1])
         instance.save()
@@ -174,6 +180,7 @@ class HBNBCommand(cmd.Cmd):
                         if type(value) is int:
                             value = str(value)
                         command = "User " + arg_1 + " " + key + " " + str(value)
+                        print(command)
                         self.do_update(command)
 
     def do_BaseModel(self, arg):

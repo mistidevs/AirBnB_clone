@@ -137,7 +137,6 @@ class HBNBCommand(cmd.Cmd):
                 attr_value += " "
             elif i == len(args) - 1 and args[i][-1] != "\"":
                 attr_value += "\""
-        print(attr_value)
         setattr(instance, attr_name, attr_value.split("\"")[1])
         instance.save()
 

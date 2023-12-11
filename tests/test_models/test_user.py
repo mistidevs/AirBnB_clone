@@ -2,20 +2,21 @@
 """Def unittest for User"""
 import unittest
 from time import sleep
-from models.user import User
 import models
 import os
 from datetime import datetime
-
+from models.user import User
 
 class TestUser(unittest.TestCase):
      """Unittests for User class""" 
- 
+    
     def test_id_is_str(self):
-        self.assertEqual(str, type(User().id))
+        im = models.user.User()
+        self.assertEqual(str, type((im.id))
 
     def test_created_at_is_datetime(self):
-        self.assertEqual(datetime, type(User().created_at))
+        im = models.user.User()
+        self.assertEqual(datetime, type(im.created_at))
 
     def test_updated_at_is_datetime(self):
         self.assertEqual(datetime, type(User().updated_at))
@@ -45,3 +46,6 @@ class TestUser(unittest.TestCase):
         user1 = User()
         user2 = User()
         self.assertNotEqual(user1.id, user2.id)
+
+if __name__ == "__main__":
+    unittest.main()

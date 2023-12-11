@@ -166,7 +166,9 @@ class HBNBCommand(cmd.Cmd):
                 command = "User " + argi
                 self.do_destroy(command)
             elif cmd == ".update":
-                args = parts[1].split(", ")
+                pattern = r"\{.*?\}"
+                pre_pro = re.sub(pattern, "", parts[1])
+                args = pre_pro.split(", ")
                 arg_1 = args[0].split("\"")[1]
                 if len(args) == 3:
                     arg_2 = args[1].split("\"")[1]
@@ -206,7 +208,9 @@ class HBNBCommand(cmd.Cmd):
                 command = "BaseModel " + argi
                 self.do_destroy(command)
             elif cmd == ".update":
-                args = parts[1].split(", ")
+                pattern = r"\{.*?\}"
+                pre_pro = re.sub(pattern, "", parts[1])
+                args = pre_pro.split(", ")
                 arg_1 = args[0].split("\"")[1]
                 if len(args) == 3:
                     arg_2 = args[1].split("\"")[1]
@@ -219,9 +223,11 @@ class HBNBCommand(cmd.Cmd):
                     match = re.search(r'({.+?})', arg)
                     the_dict = ast.literal_eval(match.group(1))
                     for key, value in the_dict.items():
-                        if type(value) is int:
-                            val = str(value)
+                        print(key)
+                        print(value)
+                        val = str(value)
                         command = "BaseModel " + arg_1 + " " + key + " " + val
+                        print(command)
                         self.do_update(command)
 
     def do_State(self, arg):
@@ -249,7 +255,9 @@ class HBNBCommand(cmd.Cmd):
                 command = "State " + argi
                 self.do_destroy(command)
             elif cmd == ".update":
-                args = parts[1].split(", ")
+                pattern = r"\{.*?\}"
+                pre_pro = re.sub(pattern, "", parts[1])
+                args = pre_pro.split(", ")
                 arg_1 = args[0].split("\"")[1]
                 if len(args) == 3:
                     arg_2 = args[1].split("\"")[1]
@@ -288,7 +296,9 @@ class HBNBCommand(cmd.Cmd):
                 command = "City " + argi
                 self.do_destroy(command)
             elif cmd == ".update":
-                args = parts[1].split(", ")
+                pattern = r"\{.*?\}"
+                pre_pro = re.sub(pattern, "", parts[1])
+                args = pre_pro.split(", ")
                 arg_1 = args[0].split("\"")[1]
                 if len(args) == 3:
                     arg_2 = args[1].split("\"")[1]
@@ -327,7 +337,9 @@ class HBNBCommand(cmd.Cmd):
                 command = "Amenity " + argi
                 self.do_destroy(command)
             elif cmd == ".update":
-                args = parts[1].split(", ")
+                pattern = r"\{.*?\}"
+                pre_pro = re.sub(pattern, "", parts[1])
+                args = pre_pro.split(", ")
                 arg_1 = args[0].split("\"")[1]
                 if len(args) == 3:
                     arg_2 = args[1].split("\"")[1]
@@ -366,7 +378,9 @@ class HBNBCommand(cmd.Cmd):
                 command = "Place " + argi
                 self.do_destroy(command)
             elif cmd == ".update":
-                args = parts[1].split(", ")
+                pattern = r"\{.*?\}"
+                pre_pro = re.sub(pattern, "", parts[1])
+                args = pre_pro.split(", ")
                 arg_1 = args[0].split("\"")[1]
                 if len(args) == 3:
                     arg_2 = args[1].split("\"")[1]
@@ -411,7 +425,9 @@ class HBNBCommand(cmd.Cmd):
                 command = "Review " + argi
                 self.do_destroy(command)
             elif cmd == ".update":
-                args = parts[1].split(", ")
+                pattern = r"\{.*?\}"
+                pre_pro = re.sub(pattern, "", parts[1])
+                args = pre_pro.split(", ")
                 arg_1 = args[0].split("\"")[1]
                 if len(args) == 3:
                     arg_2 = args[1].split("\"")[1]

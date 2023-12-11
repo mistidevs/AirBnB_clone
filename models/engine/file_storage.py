@@ -16,6 +16,7 @@ def str_to_datetime(s):
     """Convert a string in ISO format to a datetime object"""
     return datetime.datetime.fromisoformat(s)
 
+
 class FileStorage:
     """The nitty gritties of how it does this"""
     __objects = {}
@@ -25,7 +26,6 @@ class FileStorage:
     def objects(self):
         """Return the __objects dictionary"""
         return self.__objects
-
 
     def all(self):
         """Return all the objects made"""

@@ -18,7 +18,7 @@ class TestReview_values(unittest.TestCase):
         self.assertIn(Review(), models.storage.all().values())
 
     def test_id_str(self):
-        self.assertEqual(str, type(Review.id))
+        self.assertEqual(str, type(Review().id))
 
     def test_place(self):
         rev = Review()

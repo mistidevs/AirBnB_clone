@@ -10,9 +10,7 @@ from models.amenity import Amenity
 
 class Testamenity_values(unittest.TestCase):
     """Test the amenity class values"""
-
-    def test_no_args(self):
-    
+ 
     def test_id_str(self):
         self.assertEqual(str, type(Amenity().id))
 

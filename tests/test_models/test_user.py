@@ -9,9 +9,7 @@ from datetime import datetime
 
 
 class TestUser(unittest.TestCase):
-     """Unittests for User class"""
-
-    def test_no_args(self):        
+     """Unittests for User class""" 
 
     def test_value_stored(self):
         self.assertIn(User(), models.storage.all().values())

@@ -269,6 +269,7 @@ class HBNBCommand(cmd.Cmd):
                     match = re.search(r'({.+?})', arg)
                     the_dict = ast.literal_eval(match.group(1))
                     for key, value in the_dict.items():
+                        value = str(value)
                         command = "State " + arg_1 + " " + key + " " + value
                         self.do_update(command)
 
@@ -310,6 +311,7 @@ class HBNBCommand(cmd.Cmd):
                     match = re.search(r'({.+?})', arg)
                     the_dict = ast.literal_eval(match.group(1))
                     for key, value in the_dict.items():
+                        value = str(value)
                         command = "City " + arg_1 + " " + key + " " + value
                         self.do_update(command)
 
@@ -351,6 +353,7 @@ class HBNBCommand(cmd.Cmd):
                     match = re.search(r'({.+?})', arg)
                     the_dict = ast.literal_eval(match.group(1))
                     for key, value in the_dict.items():
+                        value = str(value)
                         command = "Amenity " + arg_1 + " " + key + " " + value
                         self.do_update(command)
 
@@ -396,8 +399,7 @@ class HBNBCommand(cmd.Cmd):
                     the_dict = ast.literal_eval(match.group(1))
                     print(the_dict)
                     for key, value in the_dict.items():
-                        if type(value) is int:
-                            value = str(value)
+                        value = str(value)
                         command = "Place " + arg_1 + " " + key + " " + value
                         self.do_update(command)
 
@@ -439,6 +441,7 @@ class HBNBCommand(cmd.Cmd):
                     match = re.search(r'({.+?})', arg)
                     the_dict = ast.literal_eval(match.group(1))
                     for key, value in the_dict.items():
+                        value = str(value)
                         command = "Review " + arg_1 + " " + key + " " + value
                         self.do_update(command)
 

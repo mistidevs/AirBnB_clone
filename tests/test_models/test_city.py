@@ -25,7 +25,7 @@ class TestCity_value(unittest.TestCase):
 
     def test_state_id(self):
         city1 = City()
-        self.assertEqual(str, type(City.sstate_id))
+        self.assertEqual(str, type(City().state_id))
         self.assertNotIn("state_id", dir(city1))
         self.assertIn("state_id", city1.__dict__)
 

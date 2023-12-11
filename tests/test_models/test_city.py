@@ -11,8 +11,8 @@ from models.city import City
 class TestCity_value(unittest.TestCase):
     """tast the city clas value"""
 
-    def test_no_args(self):
-        self.assertEqual(City(), model.storage.all().values())
+    def test_stored__args(self):
+        self.assertEqual(City(), models.storage.all().values())
 
     def test_id_str(self):
         self.assertEqual(str, type(City().id))

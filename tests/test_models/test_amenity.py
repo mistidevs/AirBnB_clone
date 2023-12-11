@@ -15,7 +15,7 @@ class Testamenity_values(unittest.TestCase):
         self.assertEqual(Amenity(), type(Amenity()))
 
     def test_id_str(self):
-        self.assertEqual(str, type(Amenity.id))
+        self.assertEqual(str, type(Amenity().id))
 
     def test_uniq_id(self):
         am1 = Amenity()

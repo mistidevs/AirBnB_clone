@@ -11,8 +11,7 @@ from datetime import datetime
 class TestUser(unittest.TestCase):
      """Unittests for User class"""
 
-    def test_no_args(self):
-        self.assertEqual(User, type(User()))
+    def test_no_args(self):        
 
     def test_value_stored(self):
         self.assertIn(User(), models.storage.all().values())

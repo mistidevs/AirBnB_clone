@@ -179,6 +179,7 @@ class HBNBCommand(cmd.Cmd):
                     match = re.search(r'({.+?})', arg)
                     the_dict = ast.literal_eval(match.group(1))
                     for key, value in the_dict.items():
+                        value = str(value)
                         command = "User " + arg_1 + " " + key + " " + value
                         print(command)
                         self.do_update(command)

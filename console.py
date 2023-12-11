@@ -103,7 +103,7 @@ class HBNBCommand(cmd.Cmd):
         args = arg.split(" ")
         classes = ["BaseModel", "User", "State", "City",
                    "Amenity", "Place", "Review"]
-        if len(args) == 0:
+        if len(arg) == 0:
             print("** class name missing **")
             return
         if args[0] not in classes:

@@ -11,7 +11,6 @@ from unittest.mock import patch
 class TestConsole(unittest.TestCase):
     """ Testing the console functions """
     def test_show(self):
-        
 
 
 if __name__ == "__main__":

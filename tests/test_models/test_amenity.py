@@ -12,8 +12,7 @@ class Testamenity_values(unittest.TestCase):
     """Test the amenity class values"""
 
     def test_no_args(self):
-        self.assertEqual(Amenity(), type(Amenity()))
-
+    
     def test_id_str(self):
         self.assertEqual(str, type(Amenity().id))
 

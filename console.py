@@ -103,7 +103,7 @@ class HBNBCommand(cmd.Cmd):
         args = arg.split(" ")
         classes = ["BaseModel", "User", "State", "City",
                    "Amenity", "Place", "Review"]
-        if len(args) == 0:
+        if len(arg) == 0:
             print("** class name missing **")
             return
         if args[0] not in classes:
@@ -165,20 +165,20 @@ class HBNBCommand(cmd.Cmd):
                 command = "User " + argi
                 self.do_destroy(command)
             elif cmd == ".update":
-                args = parts[1].split(", ")
+                pattern = r"\{.*?\}"
+                pre_pro = re.sub(pattern, "", parts[1])
+                args = pre_pro.split(", ")
                 arg_1 = args[0].split("\"")[1]
                 if len(args) == 3:
                     arg_2 = args[1].split("\"")[1]
                     arg_3 = args[2].split(")")[0]
-                    command = "User " + arg_1 + " " + arg_2 + " " + str(arg_3)
+                    command = "User " + arg_1 + " " + arg_2 + " " + arg_3
                     self.do_update(command)
                 else:
                     match = re.search(r'({.+?})', arg)
                     the_dict = ast.literal_eval(match.group(1))
                     for key, value in the_dict.items():
-                        if type(value) is int:
-                            value = str(value)
-                        command = "User " + arg_1 + " " + key + " " + str(value)
+                        command = "User " + arg_1 + " " + key + " " + value
                         print(command)
                         self.do_update(command)
 
@@ -207,18 +207,26 @@ class HBNBCommand(cmd.Cmd):
                 command = "BaseModel " + argi
                 self.do_destroy(command)
             elif cmd == ".update":
-                args = parts[1].split(", ")
+                pattern = r"\{.*?\}"
+                pre_pro = re.sub(pattern, "", parts[1])
+                args = pre_pro.split(", ")
                 arg_1 = args[0].split("\"")[1]
                 if len(args) == 3:
                     arg_2 = args[1].split("\"")[1]
                     arg_3 = args[2].split(")")[0]
-                    command = "BaseModel " + arg_1 + " " + arg_2 + " " + str(arg_3)
+                    if type(arg_3) is int:
+                        arg_3 = str(arg_3)
+                    command = "BaseModel " + arg_1 + " " + arg_2 + " " + arg_3
                     self.do_update(command)
                 else:
                     match = re.search(r'({.+?})', arg)
                     the_dict = ast.literal_eval(match.group(1))
                     for key, value in the_dict.items():
-                        command = "BaseModel " + arg_1 + " " + key + " " + str(value)
+                        print(key)
+                        print(value)
+                        val = str(value)
+                        command = "BaseModel " + arg_1 + " " + key + " " + val
+                        print(command)
                         self.do_update(command)
 
     def do_State(self, arg):
@@ -246,18 +254,20 @@ class HBNBCommand(cmd.Cmd):
                 command = "State " + argi
                 self.do_destroy(command)
             elif cmd == ".update":
-                args = parts[1].split(", ")
+                pattern = r"\{.*?\}"
+                pre_pro = re.sub(pattern, "", parts[1])
+                args = pre_pro.split(", ")
                 arg_1 = args[0].split("\"")[1]
                 if len(args) == 3:
                     arg_2 = args[1].split("\"")[1]
                     arg_3 = args[2].split(")")[0]
-                    command = "State " + arg_1 + " " + arg_2 + " " + str(arg_3)
+                    command = "State " + arg_1 + " " + arg_2 + " " + arg_3
                     self.do_update(command)
                 else:
                     match = re.search(r'({.+?})', arg)
                     the_dict = ast.literal_eval(match.group(1))
                     for key, value in the_dict.items():
-                        command = "State " + arg_1 + " " + key + " " + str(value)
+                        command = "State " + arg_1 + " " + key + " " + value
                         self.do_update(command)
 
     def do_City(self, arg):
@@ -285,18 +295,20 @@ class HBNBCommand(cmd.Cmd):
                 command = "City " + argi
                 self.do_destroy(command)
             elif cmd == ".update":
-                args = parts[1].split(", ")
+                pattern = r"\{.*?\}"
+                pre_pro = re.sub(pattern, "", parts[1])
+                args = pre_pro.split(", ")
                 arg_1 = args[0].split("\"")[1]
                 if len(args) == 3:
                     arg_2 = args[1].split("\"")[1]
                     arg_3 = args[2].split(")")[0]
-                    command = "City " + arg_1 + " " + arg_2 + " " + str(arg_3)
+                    command = "City " + arg_1 + " " + arg_2 + " " + arg_3
                     self.do_update(command)
                 else:
                     match = re.search(r'({.+?})', arg)
                     the_dict = ast.literal_eval(match.group(1))
                     for key, value in the_dict.items():
-                        command = "City " + arg_1 + " " + key + " " + str(value)
+                        command = "City " + arg_1 + " " + key + " " + value
                         self.do_update(command)
 
     def do_Amenity(self, arg):
@@ -324,18 +336,20 @@ class HBNBCommand(cmd.Cmd):
                 command = "Amenity " + argi
                 self.do_destroy(command)
             elif cmd == ".update":
-                args = parts[1].split(", ")
+                pattern = r"\{.*?\}"
+                pre_pro = re.sub(pattern, "", parts[1])
+                args = pre_pro.split(", ")
                 arg_1 = args[0].split("\"")[1]
                 if len(args) == 3:
                     arg_2 = args[1].split("\"")[1]
                     arg_3 = args[2].split(")")[0]
-                    command = "Amenity " + arg_1 + " " + arg_2 + " " + str(arg_3)
+                    command = "Amenity " + arg_1 + " " + arg_2 + " " + arg_3
                     self.do_update(command)
                 else:
                     match = re.search(r'({.+?})', arg)
                     the_dict = ast.literal_eval(match.group(1))
                     for key, value in the_dict.items():
-                        command = "Amenity " + arg_1 + " " + key + " " + str(value)
+                        command = "Amenity " + arg_1 + " " + key + " " + value
                         self.do_update(command)
 
     def do_Place(self, arg):
@@ -363,7 +377,9 @@ class HBNBCommand(cmd.Cmd):
                 command = "Place " + argi
                 self.do_destroy(command)
             elif cmd == ".update":
-                args = parts[1].split(", ")
+                pattern = r"\{.*?\}"
+                pre_pro = re.sub(pattern, "", parts[1])
+                args = pre_pro.split(", ")
                 arg_1 = args[0].split("\"")[1]
                 if len(args) == 3:
                     arg_2 = args[1].split("\"")[1]
@@ -408,18 +424,20 @@ class HBNBCommand(cmd.Cmd):
                 command = "Review " + argi
                 self.do_destroy(command)
             elif cmd == ".update":
-                args = parts[1].split(", ")
+                pattern = r"\{.*?\}"
+                pre_pro = re.sub(pattern, "", parts[1])
+                args = pre_pro.split(", ")
                 arg_1 = args[0].split("\"")[1]
                 if len(args) == 3:
                     arg_2 = args[1].split("\"")[1]
                     arg_3 = args[2].split(")")[0]
-                    command = "Review " + arg_1 + " " + arg_2 + " " + str(arg_3)
+                    command = "Review " + arg_1 + " " + arg_2 + " " + arg_3
                     self.do_update(command)
                 else:
                     match = re.search(r'({.+?})', arg)
                     the_dict = ast.literal_eval(match.group(1))
                     for key, value in the_dict.items():
-                        command = "Review " + arg_1 + " " + key + " " + str(value)
+                        command = "Review " + arg_1 + " " + key + " " + value
                         self.do_update(command)
 
     def do_EOF(self, line):

@@ -34,5 +34,11 @@ class TestConsole(unittest.TestCase):
             a = 'Updates the class\n'
             self.assertEqual(a, f.getvalue())
 
+    def test_quit(self):
+        with patch('sys.stdout', new=StringIO()) as f:
+            HBNBCommand().onecmd("help quit")
+            a = 'Quit command to exit the program\n'
+            self.assertEqual(a, f.getvalue())
+
 if __name__ == "__main__":
     unittest.main()

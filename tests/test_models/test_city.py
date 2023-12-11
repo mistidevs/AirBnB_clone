@@ -15,19 +15,19 @@ class TestCity_value(unittest.TestCase):
         self.assertEqual(City(), model.storage.all().values())
 
     def test_id_str(self):
-        self.assertEqual(str, type(City.id))
+        self.assertEqual(str, type(City().id))
 
     def test_name(self):
         city1 = City()
-        self.assertEqual(str, type(City.name))
+        self.assertEqual(str, type(City().name))
         self.assertNotIn("name", city1.__dict__)
         self.assertIn("name", dir(city1))
 
     def test_state_id(self):
         city1 = City()
         self.assertEqual(str, type(City().state_id))
-        self.assertNotIn("state_id", dir(city1))
-        self.assertIn("state_id", city1.__dict__)
+        self.assertIn("state_id", dir(city1))
+        self.assertNotIn("state_id", city1.__dict__)
 
     def id_uniq(self):
         city1 =  City()

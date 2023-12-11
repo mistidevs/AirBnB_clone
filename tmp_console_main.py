@@ -35,7 +35,6 @@ class HBNBCommand(cmd.Cmd):
             instance = models.review.Review()
         else:
             print("** class doesn't exist **")
-            return
         instance.save()
         print(instance.id)
         storage.new(instance)
@@ -439,3 +438,5 @@ class HBNBCommand(cmd.Cmd):
         return True
 
 
+if __name__ == '__main__':
+    HBNBCommand().cmdloop()

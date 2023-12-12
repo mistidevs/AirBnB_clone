@@ -1,9 +1,11 @@
 #!/usr/bin/python3
 """ Testing FileStorage class """
 import models
+import copy
 import json
 import unittest
 from unittest.mock import patch
+from unittest.mock import mock_open
 from models.engine.file_storage import FileStorage
 from models.base_model import BaseModel
 from models.user import User
@@ -36,11 +38,33 @@ class TestFileStorage(unittest.TestCase):
         bm1 = BaseModel()
         json_dict = bm1.to_dict()
         bm2 = BaseModel(**json_dict)
-        self.file_storage.new(bm2)
-        bm2.save()
-        self.file_storage.reload()
         self.assertEqual(self.file_storage.file_path, "file.json")
 
+    def test_save_empty(self):
+        with patch("builtins.open", mock_open()) as mock_file:
+            self.file_storage.save()
+            mock_file.assert_called_once_with("file.json",
+                                              mode="w", encoding="utf-8")
+            self.assertEqual(mock_file().write.call_args[0][0],
+                             '}')
+
+    def test_reload_different_objects(self):
+        user = User()
+        state = State()
+        self.file_storage.new(user)
+        self.file_storage.new(state)
+        self.file_storage.save()
+        self.file_storage.reload()
+        key1 = type(user).__name__ + "." + user.id
+        key2 = type(state).__name__ + "." + state.id
+        self.assertIn(key1,
+                      self.file_storage.objects)
+        self.assertIn(key2,
+                      self.file_storage.objects)
+        self.assertIsInstance(self.file_storage.objects[key1],
+                              User)
+        self.assertIsInstance(self.file_storage.objects[key2],
+                              State)
 
 if __name__ == "__main__":
     unittest.main()

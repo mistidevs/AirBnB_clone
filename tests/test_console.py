@@ -48,7 +48,7 @@ class TestConsole(unittest.TestCase):
     def test_help_quit(self):
         with patch('sys.stdout', new=StringIO()) as f:
             HBNBCommand().onecmd("help quit")
-            a = 'Quit command to exit the program\n'
+            a = 'Exit when quit command is given\n'
             self.assertEqual(a, f.getvalue())
 
 

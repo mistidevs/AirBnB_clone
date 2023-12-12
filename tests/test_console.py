@@ -51,6 +51,43 @@ class TestConsole(unittest.TestCase):
             a = 'Exit when quit command is given\n'
             self.assertEqual(a, f.getvalue())
 
+    def test_count(self):
+        try:
+            os.remove("file.json")
+        except:
+            pass
+        with patch("sys.stdout", new=StringIO()) as f:
+            HBNBCommand().onecmd("create Review")
+            HBNBCommand().onecmd("create User")
+            HBNBCommand().onecmd("create User")
+            HBNBCommand().onecmd("create City")
+            HBNBCommand().onecmd("create State")
+            HBNBCommand().onecmd("create State")
+            HBNBCommand().onecmd("create State")
+            HBNBCommand().onecmd("create Amenity")
+            HBNBCommand().onecmd("create Place")
+            HBNBCommand().onecmd("create Place")
+        with patch("sys.stdout", new=StringIO()) as f:
+            HBNBCommand().onecmd("BaseModel.count()")
+            self.assertEqual("0", f.getvalue().strip())
+        with patch("sys.stdout", new=StringIO()) as f:
+            HBNBCommand().onecmd("User.count()")
+            self.assertEqual("2", f.getvalue().strip())
+        with patch("sys.stdout", new=StringIO()) as f:
+            HBNBCommand().onecmd("City.count()")
+            self.assertEqual("1", f.getvalue().strip())
+        with patch("sys.stdout", new=StringIO()) as f:
+            HBNBCommand().onecmd("State.count()")
+            self.assertEqual("3", obtained.getvalue().strip())
+        with patch("sys.stdout", new=StringIO()) as f:
+            HBNBCommand().onecmd("Amenity.count()")
+            self.assertEqual("1", obtained.getvalue().strip())
+        with patch("sys.stdout", new=StringIO()) as f:
+            HBNBCommand().onecmd("Place.count()")
+            self.assertEqual("2", obtained.getvalue().strip())
+        with patch("sys.stdout", new=StringIO()) as f:
+            HBNBCommand().onecmd("Review.count()")
+            self.assertEqual("1", obtained.getvalue().strip())
 
 if __name__ == "__main__":
     unittest.main()

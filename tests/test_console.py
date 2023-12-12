@@ -18,10 +18,10 @@ class TestConsole(unittest.TestCase):
     def test_quit(self):
         self.assertTrue(HBNBCommand().onecmd("quit"))
 
-    def test_EOF:
+    def test_EOF(self):
         self.assertTrue(HBNBCommand().onecmd("EOF"))
 
-    def test_show(self):
+    def test_help_show(self):
         with patch('sys.stdout', new=StringIO()) as f:
             HBNBCommand().onecmd(" help show")
             a = 'prints the string representation of an instance\n'

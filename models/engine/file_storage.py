@@ -27,6 +27,10 @@ class FileStorage:
         """Return the __objects dictionary"""
         return self.__objects
 
+    @property
+    def file_path(self):
+        return self.__file_path
+
     def all(self):
         """Return all the objects made"""
         return self.__objects

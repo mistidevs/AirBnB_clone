@@ -88,19 +88,16 @@ class TestConsole(unittest.TestCase):
         with patch("sys.stdout", new=StringIO()) as f:
             HBNBCommand().onecmd("Review.count()")
             self.assertEqual("1", obtained.getvalue().strip())
-     @classmethod
-    def create_classe_all(self):
-        HBNBCommand().onecmd("create BaseModel")
-        HBNBCommand().onecmd("create User")
-        HBNBCommand().onecmd("create State")
-        HBNBCommand().onecmd("create City")
-        HBNBCommand().onecmd("create Amenity")
-        HBNBCommand().onecmd("create Place")
-        HBNBCommand().onecmd("create Review")
 
     def test_BaseModel_all(self):
         with patch("sys.stdout", new=StringIO()) as f:
-            self.create_classe_all()
+            HBNBCommand().onecmd("create BaseModel")
+            HBNBCommand().onecmd("create User")
+            HBNBCommand().onecmd("create State")
+            HBNBCommand().onecmd("create City")
+            HBNBCommand().onecmd("create Amenity")
+            HBNBCommand().onecmd("create Place")
+            HBNBCommand().onecmd("create Review")
         with patch("sys.stdout", new=StringIO()) as f:
             HBNBCommand().onecmd("BaseModel.all()")
             self.assertNotIn("User", f.getvalue().strip())

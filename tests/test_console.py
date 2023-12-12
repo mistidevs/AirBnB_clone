@@ -24,7 +24,7 @@ class TestConsole(unittest.TestCase):
     def test_help_show(self):
         with patch('sys.stdout', new=StringIO()) as f:
             HBNBCommand().onecmd(" help show")
-            a = 'prints the string representation of an instance\n'
+            a = 'Showing the instance of a class of an id\n'
             self.assertEqual(a, f.getvalue())
 
     def test_help_clear(self):
@@ -42,7 +42,7 @@ class TestConsole(unittest.TestCase):
     def test_help_update(self):
         with patch('sys.stdout', new=StringIO()) as f:
             HBNBCommand().onecmd("help update")
-            a = 'Updates the class\n'
+            a = ' Updating class attributes \n'
             self.assertEqual(a, f.getvalue())
 
     def test_help_quit(self):

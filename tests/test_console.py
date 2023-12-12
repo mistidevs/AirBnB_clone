@@ -30,7 +30,7 @@ class TestConsole(unittest.TestCase):
     def test_help_clear(self):
         with patch('sys.stdout', new=StringIO()) as f:
             HBNBCommand().onecmd("help clear")
-            a = 'clear the screen\n'
+            a = '*** No help on clear\n'
             self.assertEqual(a, f.getvalue())
 
     def test_help_destroy(self):

@@ -115,5 +115,14 @@ class TestConsole(unittest.TestCase):
         with patch("sys.stdout", new=StringIO()) as f:
             HBNBCommand().onecmd(a)
             self.assertIn(id, f.getvalue().strip())
+
+    def test_BaseModel_destroy(self):
+        with patch("sys.stdout", new=StringIO()) as f:
+            HBNBCommand().onecmd("create BaseModel")
+            a = 'BaseModel.destroy("' + f.getvalue().strip() + '")'
+            i = 'BaseModel.' + f.getvalue().strip()
+            self.assertIn(i, storage.all().keys())
+            HBNBCommand().onecmd(a)
+            self.assertNotIn(i, storage.all().keys())
 if __name__ == "__main__":
     unittest.main()

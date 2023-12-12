@@ -106,6 +106,14 @@ class TestConsole(unittest.TestCase):
             self.assertNotIn("City", f.getvalue().strip())
             self.assertNotIn("State", f.getvalue().strip())
             self.assertNotIn("Amenity", f.getvalue().strip())
-    
+
+    def test_BaseModel_show(self):
+        with patch("sys.stdout", new=StringIO()) as f:
+            HBNBCommand().onecmd("create BaseModel")
+            id = f.getvalue().strip()
+            a = 'BaseModel.show("' + f.getvalue().strip() + '")'
+        with patch("sys.stdout", new=StringIO()) as f:
+            HBNBCommand().onecmd(a)
+            self.assertIn(id, f.getvalue().strip())
 if __name__ == "__main__":
     unittest.main()

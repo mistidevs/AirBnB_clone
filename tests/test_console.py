@@ -36,7 +36,7 @@ class TestConsole(unittest.TestCase):
     def test_help_destroy(self):
         with patch('sys.stdout', new=StringIO()) as f:
             HBNBCommand().onecmd("help destroy")
-            a = 'Deletes an instance based on the class name and id\n'
+            a = 'Showing the instance of a class of an id\n'
             self.assertEqual(a, f.getvalue())
 
     def test_help_update(self):

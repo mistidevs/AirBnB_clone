@@ -8,6 +8,7 @@ from console import HBNBCommand
 from io import StringIO
 from unittest.mock import patch
 
+
 class TestConsole(unittest.TestCase):
     """ Testing the console functions """
     def test_show(self):
@@ -39,6 +40,7 @@ class TestConsole(unittest.TestCase):
             HBNBCommand().onecmd("help quit")
             a = 'Quit command to exit the program\n'
             self.assertEqual(a, f.getvalue())
+
 
 if __name__ == "__main__":
     unittest.main()

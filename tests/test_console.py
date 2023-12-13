@@ -54,7 +54,7 @@ class TestConsole(unittest.TestCase):
     def test_count(self):
         try:
             os.remove("file.json")
-        except:
+        except Exception as e:
             pass
         with patch("sys.stdout", new=StringIO()) as f:
             HBNBCommand().onecmd("create Review")
@@ -124,5 +124,7 @@ class TestConsole(unittest.TestCase):
             self.assertIn(i, storage.all().keys())
             HBNBCommand().onecmd(a)
             self.assertNotIn(i, storage.all().keys())
+
+
 if __name__ == "__main__":
     unittest.main()

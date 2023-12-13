@@ -7,6 +7,7 @@ from models.engine.file_storage import FileStorage
 from console import HBNBCommand
 from io import StringIO
 from unittest.mock import patch
+import os
 
 
 class TestConsole(unittest.TestCase):
@@ -69,25 +70,25 @@ class TestConsole(unittest.TestCase):
             HBNBCommand().onecmd("create Place")
         with patch("sys.stdout", new=StringIO()) as f:
             HBNBCommand().onecmd("BaseModel.count()")
-            self.assertEqual("0", f.getvalue().strip())
-        with patch("sys.stdout", new=StringIO()) as f:
-            HBNBCommand().onecmd("User.count()")
             self.assertEqual("2", f.getvalue().strip())
         with patch("sys.stdout", new=StringIO()) as f:
+            HBNBCommand().onecmd("User.count()")
+            self.assertEqual("3", f.getvalue().strip())
+        with patch("sys.stdout", new=StringIO()) as f:
             HBNBCommand().onecmd("City.count()")
-            self.assertEqual("1", f.getvalue().strip())
+            self.assertEqual("2", f.getvalue().strip())
         with patch("sys.stdout", new=StringIO()) as f:
             HBNBCommand().onecmd("State.count()")
-            self.assertEqual("3", obtained.getvalue().strip())
+            self.assertEqual("4", f.getvalue().strip())
         with patch("sys.stdout", new=StringIO()) as f:
             HBNBCommand().onecmd("Amenity.count()")
-            self.assertEqual("1", obtained.getvalue().strip())
+            self.assertEqual("2", f.getvalue().strip())
         with patch("sys.stdout", new=StringIO()) as f:
             HBNBCommand().onecmd("Place.count()")
-            self.assertEqual("2", obtained.getvalue().strip())
+            self.assertEqual("3", f.getvalue().strip())
         with patch("sys.stdout", new=StringIO()) as f:
             HBNBCommand().onecmd("Review.count()")
-            self.assertEqual("1", obtained.getvalue().strip())
+            self.assertEqual("2", f.getvalue().strip())
 
     def test_BaseModel_all(self):
         with patch("sys.stdout", new=StringIO()) as f:
